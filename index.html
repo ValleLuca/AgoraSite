@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agorà Club Rivoli – Sala Privata Esclusiva</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+   <style>
+        :root {
+            --neon-pink: #ff2ef7;
+            --neon-purple: #bc13fe;
+            --neon-blue: #00e5ff;
+            --neon-pink-glow: rgba(255, 46, 247, 0.4);
+            --neon-blue-glow: rgba(0, 229, 255, 0.4);
+            --bg-dark: #05000a;
+        }
+ 
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+        html { scroll-behavior: smooth; }
+ 
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+ 
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+ 
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://raw.githubusercontent.com/ValleLuca/AgoraSite/main/AgoraSala.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.35) saturate(1.4);
+            z-index: 0;
+            transform: scale(1.05);
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+ 
+        @keyframes slowZoom {
+            from { transform: scale(1.05); }
+            to   { transform: scale(1.12); }
+        }
+ 
+        /* Vignette overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(5,0,10,0.85) 100%);
+            z-index: 1;
+        }
+ 
+        /* Horizontal neon lines */
+        .hero-line-top, .hero-line-bottom {
+            position: absolute;
+            left: 0; right: 0;
+            height: 2px;
+            z-index: 3;
+        }
+        .hero-line-top {
+            top: 0;
+            background: linear-gradient(90deg, transparent, var(--neon-purple), var(--neon-pink), transparent);
+            box-shadow: 0 0 12px var(--neon-pink);
+        }
+        .hero-line-bottom {
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-purple), transparent);
+            box-shadow: 0 0 12px var(--neon-blue);
+        }
+ 
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+        }
+ 
+        .logo-wrap {
+            animation: fadeDown 1s ease both;
+        }
+ 
+        .logo-wrap img {
+            width: clamp(220px, 40vw, 380px);
+            height: auto;
+            filter: drop-shadow(0 0 25px var(--neon-pink-glow)) drop-shadow(0 0 8px var(--neon-blue-glow));
+        }
+ 
+        .hero-tagline {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: rgba(255,255,255,0.75);
+            text-transform: uppercase;
+            animation: fadeUp 1.2s ease 0.3s both;
+        }
+ 
+        .hero-cta {
+            animation: fadeUp 1.2s ease 0.6s both;
+        }
+ 
+        /* ===== SECTION ===== */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+ 
+        .section-label {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            margin-bottom: 12px;
+            display: block;
+        }
+ 
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 30px var(--neon-pink-glow);
+            margin-bottom: 40px;
+        }
+ 
+        /* ===== DIVIDER ===== */
+        .neon-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-purple) 30%, var(--neon-pink) 70%, transparent);
+            box-shadow: 0 0 10px var(--neon-pink);
+            margin: 0;
+        }
+ 
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 10px;
+        }
+ 
+        .card {
+            position: relative;
+            padding: 36px 28px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 4px;
+            transition: transform 0.3s, background 0.3s;
+            overflow: hidden;
+        }
+ 
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+ 
+        .card:hover {
+            transform: translateY(-6px);
+            background: rgba(188, 19, 254, 0.07);
+        }
+ 
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+ 
+        .card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            color: var(--neon-pink);
+            margin-bottom: 10px;
+        }
+ 
+        .card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.65);
+            font-weight: 300;
+        }
+ 
+        /* ===== FEATURES ROW ===== */
+        .features-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 30px;
+        }
+ 
+        .feature-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            background: rgba(0, 229, 255, 0.05);
+            transition: 0.3s;
+        }
+ 
+        .feature-pill:hover {
+            background: rgba(0, 229, 255, 0.12);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+        }
+ 
+        .feature-pill span.dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 6px var(--neon-blue);
+            flex-shrink: 0;
+        }
+ 
+        /* ===== STATS ===== */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+ 
+        .stat {
+            padding: 30px 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 4px;
+            background: rgba(255,255,255,0.02);
+        }
+ 
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink-glow);
+            display: block;
+        }
+ 
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-top: 4px;
+            display: block;
+        }
+ 
+        /* ===== LOCATION ===== */
+        .location-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+            margin-top: 10px;
+        }
+ 
+        .map-container {
+            height: 360px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(188,19,254,0.3);
+            box-shadow: 0 0 30px rgba(188,19,254,0.15);
+        }
+ 
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+ 
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+ 
+        .loc-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+ 
+        .loc-label {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            margin-bottom: 4px;
+        }
+ 
+        .loc-value {
+            display: block;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+ 
+        @media (max-width: 700px) {
+            .location-wrap { grid-template-columns: 1fr; }
+            .map-container { height: 260px; }
+        }
+ 
+        /* ===== CTA BAND ===== */
+        .cta-band {
+            background: linear-gradient(135deg, rgba(188,19,254,0.12), rgba(0,229,255,0.06));
+            border-top: 1px solid rgba(188,19,254,0.3);
+            border-bottom: 1px solid rgba(0,229,255,0.2);
+            text-align: center;
+            padding: 80px 24px;
+        }
+ 
+        .cta-band h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: 5px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+ 
+        .cta-band p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 36px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+ 
+        /* ===== BUTTON ===== */
+        .btn-neon {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            color: #fff;
+            border: 2px solid var(--neon-blue);
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            border-radius: 2px;
+            box-shadow: 0 0 18px rgba(0,229,255,0.3), inset 0 0 18px rgba(0,229,255,0.05);
+            background: transparent;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--neon-blue);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+ 
+        .btn-neon:hover {
+            color: #000;
+            box-shadow: 0 0 40px rgba(0,229,255,0.6);
+        }
+        .btn-neon:hover::before { transform: scaleX(1); }
+ 
+        .btn-pink {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 18px rgba(255,46,247,0.3), inset 0 0 18px rgba(255,46,247,0.05);
+        }
+        .btn-pink::before { background: var(--neon-pink); }
+        .btn-pink:hover { box-shadow: 0 0 40px rgba(255,46,247,0.6); }
+ 
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+ 
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+ 
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+ 
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .features-row { flex-direction: column; }
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-line-top"></div>
+    <div class="hero-line-bottom"></div>
+
+    <div class="hero-content">
+        <div class="logo-wrap">
+            <img src="https://raw.githubusercontent.com/ValleLuca/AgoraSite/main/Logo.png" alt="Agorà Club Rivoli">
+        </div>
+
+        <p class="hero-tagline">La tua festa. La nostra scena.</p>
+        <div class="hero-cta" style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+            <a href="#eventi" class="btn-neon">Scopri gli spazi</a>
+            <a href="https://wa.me/tuonumero" class="btn-neon btn-pink" target="_blank">Prenota ora</a>
+        </div>
+    </div>
+</div>
+
+<div class="neon-divider"></div>
+
+<!-- ===== STATS ===== -->
+<section>
+    <div class="stats-row reveal">
+        <div class="stat">
+            <span class="stat-number">150</span>
+            <span class="stat-label">Ospiti max</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">360°</span>
+            <span class="stat-label">Luci LED</span>
+        </div>
+    </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ===== EVENTI ===== -->
+<section id="eventi">
+    <span class="section-label reveal">Cosa offriamo</span>
+    <h2 class="section-title reveal">I nostri eventi</h2>
+
+    <div class="cards-grid">
+        <div class="card reveal">
+            <div class="card-icon">🎂</div>
+            <h3>Compleanni</h3>
+            <p>Festeggia il tuo giorno speciale in un'atmosfera unica. Luci, musica live e un servizio dedicato per rendere la notte indimenticabile.</p>
+        </div>
+        <div class="card reveal">
+            <div class="card-icon">🎊</div>
+            <h3>Feste di Laurea</h3>
+            <p>Hai tagliato il traguardo — celebralo in grande. Spazio per i tuoi amici.</p>
+        </div>
+        <div class="card reveal">
+            <div class="card-icon">💍</div>
+            <h3>Ricevimenti & Feste Private</h3>
+            <p>Dalla cena elegante al dopo-festa esclusivo. La sala si adatta al tuo evento.</p>
+        </div>
+    </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ===== DOTAZIONI ===== -->
+<section>
+    <span class="section-label reveal">La struttura</span>
+    <h2 class="section-title reveal">Dotazioni incluse</h2>
+
+    <div class="features-row">
+        <div class="feature-pill reveal"><span class="dot"></span> Impianto audio</div>
+        <div class="feature-pill reveal"><span class="dot"></span> Luci LED multicolore</div>
+        <div class="feature-pill reveal"><span class="dot"></span> DJ attrezzato</div>
+        <div class="feature-pill reveal"><span class="dot"></span> Bar interno</div>
+        <div class="feature-pill reveal"><span class="dot"></span> Pista da ballo</div>
+        <div class="feature-pill reveal"><span class="dot"></span> Sala lounge</div>
+    </div>
+</section>
+
+<div class="neon-divider"></div>
+
+<!-- ===== DOVE SIAMO ===== -->
+<div class="neon-divider"></div>
+
+<section id="dove-siamo">
+    <span class="section-label reveal">Raggiungici</span>
+    <h2 class="section-title reveal">Dove siamo</h2>
+
+    <div class="location-wrap reveal">
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d720.5!2d7.5205446!3d45.0694121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886aa0739f6747:0xb6e89dd23067d85f!2sAgor%C3%A0!5e0!3m2!1sit!2sit!4v1"
+                width="100%" height="100%"
+                style="border:0; filter: saturate(0.3) brightness(0.7) hue-rotate(200deg);"
+                allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div class="location-info">
+            <div class="location-item">
+                <span class="loc-icon">📍</span>
+                <div>
+                    <span class="loc-label">Indirizzo</span>
+                    <span class="loc-value">Piazza Principe Eugenio, 12, 10098 Rivoli TO</span>
+                </div>
+            </div>
+            <a href="https://maps.app.goo.gl/jJyf3UJRbqcbFeR76" target="_blank" class="btn-neon" style="margin-top:10px; width:fit-content;">
+                🗺️ &nbsp;Apri in Google Maps
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== CTA BAND ===== -->
+<div class="cta-band">
+    <h2 class="reveal">Pronto a prenotare?</h2>
+    <p class="reveal">Contattaci su WhatsApp per verificare la disponibilità e ricevere un preventivo personalizzato.</p>
+    <a href="https://wa.me/tuonumero" class="btn-neon btn-pink reveal" target="_blank">
+        📲 &nbsp;Scrivici su WhatsApp
+    </a>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <p>© 2026 Agorà Club Rivoli APS — Tutti i diritti riservati — Rivoli (TO)</p>
+</footer>
+
+<script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
