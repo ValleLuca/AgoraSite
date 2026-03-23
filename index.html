@@ -6,7 +6,7 @@
     <title>Agorà Club Rivoli – Sala Privata Esclusiva</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
-   <style>
+    <style>
         :root {
             --neon-pink: #ff2ef7;
             --neon-purple: #bc13fe;
@@ -15,18 +15,18 @@
             --neon-blue-glow: rgba(0, 229, 255, 0.4);
             --bg-dark: #05000a;
         }
- 
+
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
         html { scroll-behavior: smooth; }
- 
+
         body {
             font-family: 'Rajdhani', sans-serif;
             background-color: var(--bg-dark);
             color: #fff;
             overflow-x: hidden;
         }
- 
+
         /* ===== HERO ===== */
         .hero {
             position: relative;
@@ -38,7 +38,7 @@
             text-align: center;
             overflow: hidden;
         }
- 
+
         .hero-bg {
             position: absolute;
             inset: 0;
@@ -50,12 +50,12 @@
             transform: scale(1.05);
             animation: slowZoom 20s ease-in-out infinite alternate;
         }
- 
+
         @keyframes slowZoom {
             from { transform: scale(1.05); }
             to   { transform: scale(1.12); }
         }
- 
+
         /* Vignette overlay */
         .hero::after {
             content: '';
@@ -64,7 +64,7 @@
             background: radial-gradient(ellipse at center, transparent 40%, rgba(5,0,10,0.85) 100%);
             z-index: 1;
         }
- 
+
         /* Horizontal neon lines */
         .hero-line-top, .hero-line-bottom {
             position: absolute;
@@ -82,7 +82,7 @@
             background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-purple), transparent);
             box-shadow: 0 0 12px var(--neon-blue);
         }
- 
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -92,17 +92,17 @@
             align-items: center;
             gap: 28px;
         }
- 
+
         .logo-wrap {
             animation: fadeDown 1s ease both;
         }
- 
+
         .logo-wrap img {
             width: clamp(220px, 40vw, 380px);
             height: auto;
             filter: drop-shadow(0 0 25px var(--neon-pink-glow)) drop-shadow(0 0 8px var(--neon-blue-glow));
         }
- 
+
         .hero-tagline {
             font-family: 'Rajdhani', sans-serif;
             font-size: clamp(1rem, 2.5vw, 1.4rem);
@@ -112,28 +112,28 @@
             text-transform: uppercase;
             animation: fadeUp 1.2s ease 0.3s both;
         }
- 
+
         .hero-cta {
             animation: fadeUp 1.2s ease 0.6s both;
         }
- 
+
         /* ===== SECTION ===== */
         section {
             max-width: 1100px;
             margin: 0 auto;
             padding: 80px 24px;
         }
- 
+
         .section-label {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 8px;
+            font-size: 1.75rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: var(--neon-blue);
             margin-bottom: 12px;
             display: block;
         }
- 
+
         .section-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.4rem, 6vw, 4rem);
@@ -142,7 +142,7 @@
             text-shadow: 0 0 30px var(--neon-pink-glow);
             margin-bottom: 40px;
         }
- 
+
         /* ===== DIVIDER ===== */
         .neon-divider {
             width: 100%;
@@ -151,15 +151,16 @@
             box-shadow: 0 0 10px var(--neon-pink);
             margin: 0;
         }
- 
+
         /* ===== CARDS GRID ===== */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
             margin-top: 10px;
+            text-align: center;
         }
- 
+
         .card {
             position: relative;
             padding: 36px 28px;
@@ -169,7 +170,7 @@
             transition: transform 0.3s, background 0.3s;
             overflow: hidden;
         }
- 
+
         .card::before {
             content: '';
             position: absolute;
@@ -178,17 +179,17 @@
             background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
             box-shadow: 0 0 10px var(--neon-pink);
         }
- 
+
         .card:hover {
             transform: translateY(-6px);
             background: rgba(188, 19, 254, 0.07);
         }
- 
+
         .card-icon {
             font-size: 2rem;
             margin-bottom: 14px;
         }
- 
+
         .card h3 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.6rem;
@@ -196,14 +197,14 @@
             color: var(--neon-pink);
             margin-bottom: 10px;
         }
- 
+
         .card p {
             font-size: 1rem;
             line-height: 1.7;
             color: rgba(255,255,255,0.65);
             font-weight: 300;
         }
- 
+
         /* ===== FEATURES ROW ===== */
         .features-row {
             display: flex;
@@ -211,7 +212,7 @@
             gap: 16px;
             margin-top: 30px;
         }
- 
+
         .feature-pill {
             display: flex;
             align-items: center;
@@ -226,12 +227,12 @@
             background: rgba(0, 229, 255, 0.05);
             transition: 0.3s;
         }
- 
+
         .feature-pill:hover {
             background: rgba(0, 229, 255, 0.12);
             box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
         }
- 
+
         .feature-pill span.dot {
             width: 6px; height: 6px;
             border-radius: 50%;
@@ -239,7 +240,7 @@
             box-shadow: 0 0 6px var(--neon-blue);
             flex-shrink: 0;
         }
- 
+
         /* ===== STATS ===== */
         .stats-row {
             display: grid;
@@ -248,14 +249,14 @@
             text-align: center;
             margin-top: 40px;
         }
- 
+
         .stat {
             padding: 30px 20px;
             border: 1px solid rgba(255,255,255,0.06);
             border-radius: 4px;
             background: rgba(255,255,255,0.02);
         }
- 
+
         .stat-number {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3rem;
@@ -263,7 +264,7 @@
             text-shadow: 0 0 20px var(--neon-pink-glow);
             display: block;
         }
- 
+
         .stat-label {
             font-size: 0.75rem;
             letter-spacing: 4px;
@@ -272,7 +273,7 @@
             margin-top: 4px;
             display: block;
         }
- 
+
         /* ===== LOCATION ===== */
         .location-wrap {
             display: grid;
@@ -281,7 +282,7 @@
             align-items: start;
             margin-top: 10px;
         }
- 
+
         .map-container {
             height: 360px;
             border-radius: 4px;
@@ -289,25 +290,25 @@
             border: 1px solid rgba(188,19,254,0.3);
             box-shadow: 0 0 30px rgba(188,19,254,0.15);
         }
- 
+
         .location-info {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
- 
+
         .location-item {
             display: flex;
             align-items: flex-start;
             gap: 16px;
         }
- 
+
         .loc-icon {
             font-size: 1.4rem;
             flex-shrink: 0;
             margin-top: 2px;
         }
- 
+
         .loc-label {
             display: block;
             font-size: 0.7rem;
@@ -316,7 +317,7 @@
             color: var(--neon-blue);
             margin-bottom: 4px;
         }
- 
+
         .loc-value {
             display: block;
             font-size: 1rem;
@@ -324,12 +325,12 @@
             font-weight: 300;
             line-height: 1.5;
         }
- 
+
         @media (max-width: 700px) {
             .location-wrap { grid-template-columns: 1fr; }
             .map-container { height: 260px; }
         }
- 
+
         /* ===== CTA BAND ===== */
         .cta-band {
             background: linear-gradient(135deg, rgba(188,19,254,0.12), rgba(0,229,255,0.06));
@@ -338,7 +339,7 @@
             text-align: center;
             padding: 80px 24px;
         }
- 
+
         .cta-band h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
@@ -346,7 +347,7 @@
             color: #fff;
             margin-bottom: 16px;
         }
- 
+
         .cta-band p {
             font-size: 1.1rem;
             color: rgba(255,255,255,0.6);
@@ -354,7 +355,7 @@
             font-weight: 300;
             letter-spacing: 1px;
         }
- 
+
         /* ===== BUTTON ===== */
         .btn-neon {
             display: inline-flex;
@@ -374,7 +375,7 @@
             position: relative;
             overflow: hidden;
         }
- 
+
         .btn-neon::before {
             content: '';
             position: absolute;
@@ -385,20 +386,20 @@
             transition: transform 0.3s ease;
             z-index: -1;
         }
- 
+
         .btn-neon:hover {
             color: #000;
             box-shadow: 0 0 40px rgba(0,229,255,0.6);
         }
         .btn-neon:hover::before { transform: scaleX(1); }
- 
+
         .btn-pink {
             border-color: var(--neon-pink);
             box-shadow: 0 0 18px rgba(255,46,247,0.3), inset 0 0 18px rgba(255,46,247,0.05);
         }
         .btn-pink::before { background: var(--neon-pink); }
         .btn-pink:hover { box-shadow: 0 0 40px rgba(255,46,247,0.6); }
- 
+
         /* ===== FOOTER ===== */
         footer {
             text-align: center;
@@ -409,7 +410,7 @@
             color: rgba(255,255,255,0.2);
             border-top: 1px solid rgba(255,255,255,0.05);
         }
- 
+
         /* ===== ANIMATIONS ===== */
         @keyframes fadeDown {
             from { opacity: 0; transform: translateY(-30px); }
@@ -419,7 +420,7 @@
             from { opacity: 0; transform: translateY(30px); }
             to   { opacity: 1; transform: translateY(0); }
         }
- 
+
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -429,7 +430,7 @@
             opacity: 1;
             transform: translateY(0);
         }
- 
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
             .features-row { flex-direction: column; }
@@ -451,9 +452,10 @@
         </div>
 
         <p class="hero-tagline">La tua festa. La nostra scena.</p>
+
         <div class="hero-cta" style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
             <a href="#eventi" class="btn-neon">Scopri gli spazi</a>
-            <a href="https://wa.me/tuonumero" class="btn-neon btn-pink" target="_blank">Prenota ora</a>
+            <a href="contatti.html" class="btn-neon btn-pink">Prenota ora</a>
         </div>
     </div>
 </div>
@@ -490,7 +492,7 @@
         <div class="card reveal">
             <div class="card-icon">🎊</div>
             <h3>Feste di Laurea</h3>
-            <p>Hai tagliato il traguardo — celebralo in grande. Spazio per i tuoi amici.</p>
+            <p>Hai tagliato il traguardo — celebralo in grande. Spazio per i tuoi amici, impianto audio e atmosfera da vero club.</p>
         </div>
         <div class="card reveal">
             <div class="card-icon">💍</div>
@@ -513,7 +515,6 @@
         <div class="feature-pill reveal"><span class="dot"></span> DJ attrezzato</div>
         <div class="feature-pill reveal"><span class="dot"></span> Bar interno</div>
         <div class="feature-pill reveal"><span class="dot"></span> Pista da ballo</div>
-        <div class="feature-pill reveal"><span class="dot"></span> Sala lounge</div>
     </div>
 </section>
 
@@ -531,7 +532,7 @@
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d720.5!2d7.5205446!3d45.0694121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886aa0739f6747:0xb6e89dd23067d85f!2sAgor%C3%A0!5e0!3m2!1sit!2sit!4v1"
                 width="100%" height="100%"
-                style="border:0; filter: saturate(0.3) brightness(0.7) hue-rotate(200deg);"
+                style="border:0;"
                 allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
@@ -552,13 +553,12 @@
     </div>
 </section>
 
-
 <!-- ===== CTA BAND ===== -->
 <div class="cta-band">
     <h2 class="reveal">Pronto a prenotare?</h2>
-    <p class="reveal">Contattaci su WhatsApp per verificare la disponibilità e ricevere un preventivo personalizzato.</p>
-    <a href="https://wa.me/tuonumero" class="btn-neon btn-pink reveal" target="_blank">
-        📲 &nbsp;Scrivici su WhatsApp
+    <p class="reveal">Contattaci per verificare la disponibilità.</p>
+    <a href="contatti.html" class="btn-neon btn-pink reveal">
+        📲 &nbsp;Contatti
     </a>
 </div>
 
