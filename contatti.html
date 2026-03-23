@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti – Agorà Club Rivoli</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-pink: #ff2ef7;
+            --neon-purple: #bc13fe;
+            --neon-blue: #00e5ff;
+            --neon-pink-glow: rgba(255, 46, 247, 0.4);
+            --neon-blue-glow: rgba(0, 229, 255, 0.4);
+            --bg-dark: #05000a;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== TOP BAR ===== */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            background: rgba(5,0,10,0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-logo img {
+            height: 48px;
+            filter: drop-shadow(0 0 10px var(--neon-pink-glow));
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .back-btn:hover { color: var(--neon-blue); }
+        .back-btn svg { width: 16px; height: 16px; }
+
+        /* ===== HERO MINI ===== */
+        .page-hero {
+            text-align: center;
+            padding: 70px 24px 50px;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(188,19,254,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .section-label {
+            font-size: 1.75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            letter-spacing: 6px;
+            color: #fff;
+            text-shadow: 0 0 40px var(--neon-pink-glow);
+            margin-bottom: 16px;
+        }
+
+        .page-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            letter-spacing: 2px;
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== NEON DIVIDER ===== */
+        .neon-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-purple) 30%, var(--neon-pink) 70%, transparent);
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 70px 24px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+        }
+
+        /* ===== WHATSAPP BLOCK ===== */
+        .whatsapp-block { text-align: center; }
+
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .block-desc {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+
+        .wa-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .wa-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 30px 36px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(37,211,102,0.25);
+            border-radius: 4px;
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+            min-width: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wa-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: #25d366;
+            box-shadow: 0 0 12px rgba(37,211,102,0.6);
+        }
+
+        .wa-card:hover {
+            transform: translateY(-6px);
+            background: rgba(37,211,102,0.06);
+            box-shadow: 0 0 30px rgba(37,211,102,0.15);
+        }
+
+        .wa-icon {
+            width: 48px; height: 48px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(37,211,102,0.4);
+        }
+
+        .wa-icon svg { width: 26px; height: 26px; fill: #fff; }
+
+        .wa-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+        }
+
+        .wa-role {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .wa-number {
+            font-size: 0.9rem;
+            color: #25d366;
+            letter-spacing: 2px;
+        }
+
+        .wa-cta {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(37,211,102,0.7);
+            border: 1px solid rgba(37,211,102,0.3);
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-top: 4px;
+        }
+
+        /* ===== STAFF BLOCK ===== */
+        .staff-block {}
+
+        .staff-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .staff-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s, background 0.3s;
+            position: relative;
+        }
+
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-6px);
+            background: rgba(188,19,254,0.06);
+        }
+
+        .staff-photo-wrap {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: rgba(255,255,255,0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .staff-photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.5s ease;
+        }
+
+        .staff-card:hover .staff-photo-wrap img {
+            transform: scale(1.04);
+        }
+
+        /* Placeholder quando non c'è foto */
+        .staff-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.15);
+        }
+
+        .staff-placeholder svg {
+            width: 56px; height: 56px;
+            fill: rgba(255,255,255,0.1);
+        }
+
+        .staff-placeholder span {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .staff-info {
+            padding: 24px 26px 28px;
+        }
+
+        .staff-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .staff-role {
+            font-size: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--neon-pink);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .staff-bio {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 36px 24px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.15);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ===== REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .topbar { padding: 16px 20px; }
+            .wa-buttons { flex-direction: column; align-items: center; }
+            .wa-card { width: 100%; max-width: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+    <a href="index.html" class="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Torna al sito
+    </a>
+    <a href="index.html" class="topbar-logo">
+        <img src="https://raw.githubusercontent.com/ValleLuca/AgoraSite/main/Logo.png" alt="Agorà Club Rivoli">
+    </a>
+</div>
+
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+    <span class="section-label">Contatti</span>
+    <h1 class="page-title">Parliamoci</h1>
+    <p class="page-subtitle">Siamo qui per aiutarti a organizzare il tuo evento. Scrivici direttamente su WhatsApp.</p>
+</div>
+
+<div class="neon-divider"></div>
+
+<main class="main">
+
+    <!-- WHATSAPP -->
+    <div class="whatsapp-block reveal">
+        <h2 class="block-title">Contattaci su WhatsApp</h2>
+        <p class="block-desc">Scegli con chi vuoi parlare</p>
+
+        <div class="wa-buttons">
+
+            <!-- CONTATTO 1 — modifica nome, ruolo, numero -->
+            <a href="https://wa.me/3463349889" class="wa-card" target="_blank">
+                <div class="wa-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L0 24l6.335-1.508A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.006-1.371l-.359-.214-3.76.895.955-3.682-.234-.379A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                </div>
+                <span class="wa-name">Matteo</span>
+                <span class="wa-role">Organizzatore & Barman</span>
+                <span class="wa-number">+39 3463349889</span>
+                <span class="wa-cta">Scrivi ora →</span>
+            </a>
+
+            <!-- CONTATTO 2 — modifica nome, ruolo, numero -->
+            <a href="https://wa.me/3928033838" class="wa-card" target="_blank">
+                <div class="wa-icon">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L0 24l6.335-1.508A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.006-1.371l-.359-.214-3.76.895.955-3.682-.234-.379A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                </div>
+                <span class="wa-name">Luca</span>
+                <span class="wa-role">Organizzatore & DJ</span>
+                <span class="wa-number">+39 3928033838</span>
+                <span class="wa-cta">Scrivi ora →</span>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="neon-divider"></div>
+
+    <!-- STAFF -->
+    <div class="staff-block">
+        <div class="staff-header reveal">
+            <span class="section-label">Il nostro team</span>
+            <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,5vw,3.2rem); letter-spacing:4px; text-shadow:0 0 30px var(--neon-pink-glow);">Chi siamo</h2>
+        </div>
+
+        <div class="staff-grid">
+
+            <!-- PERSONA 1 — sostituisci foto.jpg con il nome del tuo file immagine -->
+            <div class="staff-card reveal">
+                <div class="staff-photo-wrap">
+                    <!-- Se hai una foto: <img src="https://raw.githubusercontent.com/ValleLuca/AgoraSite/main/foto1.jpg" alt="Nome"> -->
+                    <!-- Se non hai ancora la foto, lascia il placeholder qui sotto -->
+                    <div class="staff-placeholder">
+                        <img src="https://media-mxp2-1.cdn.whatsapp.net/v/t61.24694-24/244380718_607635093698407_2548678521160125934_n.jpg?ccb=11-4&oh=01_Q5Aa4AF_t-phNoL6No2zWyvfnuOALt4CfSrquPi8x5BHOpfeGQ&oe=69CE75C0&_nc_sid=5e03e0&_nc_cat=108">
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <div class="staff-name">Matteo</div>
+                    <span class="staff-role">Organizzatore & Barman</span>
+                    <p class="staff-bio">-</p>
+                </div>
+            </div>
+
+            <!-- PERSONA 2 -->
+            <div class="staff-card reveal">
+                <div class="staff-photo-wrap">
+                    <!-- <img src="https://raw.githubusercontent.com/ValleLuca/AgoraSite/main/foto2.jpg" alt="Nome"> -->
+                    <div class="staff-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/92037168?v=4" alt="">
+                    </div>
+                </div>
+                <div class="staff-info">
+                    <div class="staff-name">Luca</div>
+                    <span class="staff-role">Organizzatore & DJ</span>
+                    <p class="staff-bio">-</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<div class="neon-divider"></div>
+
+<footer>
+    <p>© 2026 Agorà Club Rivoli APS — Tutti i diritti riservati — Rivoli (TO)</p>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
